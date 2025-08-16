@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import DemoNavigation from '../components/ui/DemoNavigation';
 
 // Simple CountUp Component
 const SimpleCountUp = ({ to, duration = 2, delay = 0, suffix = '' }) => {
@@ -97,6 +98,9 @@ export default function RootPage() {
 
   return (
     <div className="min-h-screen bg-black flex flex-col relative overflow-hidden">
+      {/* Demo Navigation */}
+      <DemoNavigation />
+      
       {/* Clean Background Effects */}
       <div className="absolute inset-0 z-0">
         {/* Simple Gradient Overlay */}

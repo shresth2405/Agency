@@ -99,6 +99,50 @@
     }
   }
 
+  /* Enhanced GSAP ScrollSmoother Styles */
+  .scroll-wrapper {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    background: linear-gradient(rgba(139,92,246,.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(139,92,246,.05) 2px, transparent 2px),
+                linear-gradient(rgba(59,130,246,.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,.03) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  }
+
+  .tilt-section {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .parallax-fast,
+  .parallax-slow,
+  .reveal-up {
+    transform-style: preserve-3d;
+  }
+
+  .floating-orb {
+    will-change: transform;
+  }
+
+  /* Custom scrollbar for enhanced experience */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(139, 92, 246, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #8B5CF6, #3B82F6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #7C3AED, #2563EB);
+  }
+
   @keyframes gradient-shift {
     0% {
       background-position: 0% 50%;
