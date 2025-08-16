@@ -9,7 +9,7 @@ import AboutSimple from "@/components/sections/AboutSimple";
 import ServicesSimple from "@/components/sections/ServicesSimple";
 import ProjectsSimple from "@/components/sections/ProjectsSimple";
 import ContactSimple from "@/components/sections/ContactSimple";
-import RefinedTeamSection from "@/components/sections/RefinedTeamSection";
+// import RefinedTeamSection from "@/components/sections/RefinedTeamSection";
 
 // Simple Navbar Component
 const SimpleNavbar = () => {
@@ -173,13 +173,17 @@ const SimpleFooter = () => {
 };
 
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setIsClient(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000); // 5 seconds
+
+    return () => clearTimeout(timer);
   }, []);
 
-  if (!isClient) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-primary flex items-center justify-center">
         <div className="w-8 h-8 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
@@ -196,7 +200,7 @@ export default function Home() {
         <AboutSimple />
         <ServicesSimple />
         <ProjectsSimple />
-        <RefinedTeamSection />
+        {/* <RefinedTeamSection /> */}
         <ContactSimple />
       </main>
       
