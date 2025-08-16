@@ -61,13 +61,13 @@ export default function NotFound() {
           transition={{ delay: 1, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link href="/home">
+          <Link href="/">
             <GlareButton variant="primary" size="lg">
               Back to Home
             </GlareButton>
           </Link>
-          
-          <Link href="/home#contact">
+
+          <Link href="/#contact">
             <GlareButton variant="secondary" size="lg">
               Contact Us
             </GlareButton>

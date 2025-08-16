@@ -10,6 +10,8 @@ import ServicesSimple from "@/components/sections/ServicesSimple";
 import ProjectsSimple from "@/components/sections/ProjectsSimple";
 import ContactSimple from "@/components/sections/ContactSimple";
 import Testimonials from '@/components/sections/Testimonials';
+import TeamPage from './team/page';
+import Process from '@/components/sections/Process';
 // import RefinedTeamSection from "@/components/sections/RefinedTeamSection";
 
 // Simple Navbar Component
@@ -180,7 +182,7 @@ export default function Home() {
 
   useEffect(() => {
     // Show stats after 2 seconds
-    const statsTimer = setTimeout(() => setShowStats(true), 2000);
+    const statsTimer = setTimeout(() => setShowStats(true), 5900);
     
     // Simulate loading progress with deterministic increments
     let currentProgress = 0;
@@ -193,7 +195,7 @@ export default function Home() {
         // Hide loader after completion
         setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        }, 6000);
       }
     }, 100);
 
@@ -286,8 +288,8 @@ export default function Home() {
         <AboutSimple />
         <ServicesSimple />
         <ProjectsSimple />
-        <Testimonials />
-        {/* <RefinedTeamSection /> */}
+        <Process/>
+        <TeamPage/>
         <ContactSimple />
       </main>
       
