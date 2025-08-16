@@ -14,7 +14,7 @@ const RefinedNavigation = ({ currentSection = 0 }) => {
   ];
 
   const sectionIndicators = [
-    'Intro', 'About', 'Hero', 'Services', 'About', 'Projects', 'Contact'
+    'Intro', 'About', 'Hero', 'Services', 'About', 'Projects', 'Team', 'Contact'
   ];
 
   return (

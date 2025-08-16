@@ -2,9 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { Observer } from 'gsap/Observer';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import RefinedGSAPTitle from './sections/RefinedGSAPTitle';
 import RefinedGSAPInfo from './sections/RefinedGSAPInfo';
 import RefinedHeroSection from './sections/RefinedHeroSection';
@@ -12,6 +11,7 @@ import RefinedServicesSection from './sections/RefinedServicesSection';
 import RefinedAboutSection from './sections/RefinedAboutSection';
 import RefinedProjectsSection from './sections/RefinedProjectsSection';
 import RefinedContactSection from './sections/RefinedContactSection';
+import RefinedTeamSection from './sections/RefinedTeamSection';
 import RefinedNavigation from './ui/RefinedNavigation';
 import RefinedParticleSystem from './ui/RefinedParticleSystem';
 import RefinedMagneticElements from './ui/RefinedMagneticElements';
@@ -20,7 +20,7 @@ import RefinedLoadingOverlay from './ui/RefinedLoadingOverlay';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, Observer);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 
 const RefinedEnhancedHomePage = () => {
@@ -40,20 +40,6 @@ const RefinedEnhancedHomePage = () => {
 
     // Initialize loading sequence
     const initializeApp = () => {
-      // Initialize ScrollSmoother
-      const smoother = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1,
-        effects: true,
-        normalizeScroll: true,
-        smoothTouch: 0.1,
-        ignoreMobileResize: true,  // Improves performance on mobile devices
-        preventDefault: true,      // Prevents default scroll behavior
-        renderGlitch: 0.5,         // Helps with rendering glitches
-        anticipatePin: 1           // Improves pin performance
-      });
-      
       // Preload animation
       gsap.timeline()
         .set(wrapper, { opacity: 0 })
@@ -74,33 +60,11 @@ const RefinedEnhancedHomePage = () => {
         willChange: 'transform'
       });
 
-      // Get reference to ScrollSmoother
-      const smoother = ScrollSmoother.get();
-
       // Set default scroller for all ScrollTrigger instances
       ScrollTrigger.defaults({
-        scroller: "#smooth-content"
+        scroller: window
       });
       
-      // Enhanced integration with ScrollSmoother
-      if (smoother) {
-        // Use ScrollSmoother's effects to create additional parallax
-        smoother.effects(".refined-float", {speed: 0.8});
-        smoother.effects(".refined-text-reveal", {speed: 1.1});
-        
-        // Setup smoother callbacks
-        smoother.scrollTo(0, true, "auto");
-        
-        // ScrollSmoother-specific animations
-        smoother.on("update", self => {
-          // You can add animations that react to scroll progress here
-          const progress = self.progress;
-          gsap.set('.tilt-section', {
-            rotateX: progress * 5, // subtle tilt based on scroll position
-          });
-        });
-      }
-
       // Optimized mouse movement tracking
       let mouseX = 0, mouseY = 0;
       let currentX = 0, currentY = 0;
@@ -288,7 +252,6 @@ const RefinedEnhancedHomePage = () => {
     return () => {
       if (cleanup) cleanup();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      ScrollSmoother.get() && ScrollSmoother.get().kill();
       window.removeEventListener('resize', onResize);
       clearTimeout(resizeTimeout);
     };
@@ -302,7 +265,6 @@ const RefinedEnhancedHomePage = () => {
 
       <div 
         ref={wrapperRef}
-        id="smooth-wrapper"
         className="refined-wrapper min-h-screen relative overflow-hidden"
         style={{
           background: `
@@ -320,7 +282,7 @@ const RefinedEnhancedHomePage = () => {
         {/* Advanced Particle System */}
         <RefinedParticleSystem mousePosition={mousePosition} />
         
-        <div ref={contentRef} id="smooth-content" className="refined-content relative z-10">
+        <div ref={contentRef} className="refined-content relative z-10">
           {/* Enhanced Background Elements */}
           <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
             <div className="refined-float absolute top-1/4 left-1/6 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-3xl" data-lag="0.15" />
@@ -353,6 +315,10 @@ const RefinedEnhancedHomePage = () => {
 
             <section className="refined-section refined-magnetic refined-morph" data-speed="1.1">
               <RefinedProjectsSection />
+            </section>
+
+            <section className="refined-section refined-magnetic refined-morph" data-speed="0.9">
+              <RefinedTeamSection />
             </section>
 
             <section className="refined-section refined-magnetic refined-morph" data-speed="0.95">

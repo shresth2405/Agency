@@ -9,6 +9,7 @@ import AboutSimple from "@/components/sections/AboutSimple";
 import ServicesSimple from "@/components/sections/ServicesSimple";
 import ProjectsSimple from "@/components/sections/ProjectsSimple";
 import ContactSimple from "@/components/sections/ContactSimple";
+import RefinedTeamSection from "@/components/sections/RefinedTeamSection";
 
 // Simple Navbar Component
 const SimpleNavbar = () => {
@@ -28,6 +29,7 @@ const SimpleNavbar = () => {
     { title: 'About', href: '#about' },
     { title: 'Services', href: '#services' },
     { title: 'Projects', href: '#projects' },
+    { title: 'Team', href: '#team' },
     { title: 'Contact', href: '#contact' },
   ];
 
@@ -139,7 +141,7 @@ const SimpleFooter = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
-              {['Home', 'About', 'Services', 'Projects', 'Contact'].map((link, index) => (
+              {['Home', 'About', 'Services', 'Projects', 'Team', 'Contact'].map((link, index) => (
                 <a
                   key={index}
                   href={`#${link.toLowerCase()}`}
@@ -194,6 +196,7 @@ export default function Home() {
         <AboutSimple />
         <ServicesSimple />
         <ProjectsSimple />
+        <RefinedTeamSection />
         <ContactSimple />
       </main>
       
