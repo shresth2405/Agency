@@ -67,7 +67,7 @@ const GSAPTitle = () => {
           </motion.div>
           
           <div ref={titleRef} className="overflow-hidden">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gradient-hero mb-4 leading-tight">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gradient-hero mb-4 leading-tight text-reveal">
               Scroll Demo
             </h1>
           </div>
@@ -82,7 +82,7 @@ const GSAPTitle = () => {
           </motion.div>
           
           <div ref={subtitleRef} className="overflow-hidden">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-gradient-accent">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-gradient-accent text-reveal">
               <span className="font-light">with</span> Enhanced Effects
             </h2>
           </div>

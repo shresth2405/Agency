@@ -3,14 +3,17 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import GSAPTitle from '../sections/GSAPTitle';
-import GSAPInfo from '../sections/GSAPInfo';
-import HeroSimple from '../sections/HeroSimple';
-import ServicesSimple from '../sections/ServicesSimple';
-import AboutSimple from '../sections/AboutSimple';
-import ProjectsSimple from '../sections/ProjectsSimple';
-import ContactSimple from '../sections/ContactSimple';
+import GSAPTitle from './sections/GSAPTitle';
+import GSAPInfo from './sections/GSAPInfo';
+import HeroSimple from './sections/HeroSimple';
+import ServicesSimple from './sections/ServicesSimple';
+import AboutSimple from './sections/AboutSimple';
+import ProjectsSimple from './sections/ProjectsSimple';
+import ContactSimple from './sections/ContactSimple';
 import DemoNavigation from './ui/DemoNavigation';
+import AdvancedParticleSystem from './ui/AdvancedParticleSystem';
+import MagneticElements from './ui/MagneticElements';
+import PerformanceMonitor from './ui/PerformanceMonitor';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -78,31 +81,81 @@ const EnhancedHomePage = () => {
         gsap.set(content, { cursor: 'grab' });
       };
 
-      // Parallax scroll effects
-      gsap.utils.toArray('.parallax-fast').forEach(element => {
+      // Enhanced parallax with 3D depth
+      gsap.utils.toArray('.parallax-depth').forEach((element, index) => {
+        const depth = (index + 1) * 0.5;
         gsap.fromTo(element, {
-          y: -100
+          z: -100 * depth,
+          rotateX: 5,
         }, {
-          y: 100,
-          scrollTrigger: {
-            trigger: element,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.5
-          }
-        });
-      });
-
-      gsap.utils.toArray('.parallax-slow').forEach(element => {
-        gsap.fromTo(element, {
-          y: -30
-        }, {
-          y: 30,
+          z: 100 * depth,
+          rotateX: -5,
           scrollTrigger: {
             trigger: element,
             start: 'top bottom',
             end: 'bottom top',
             scrub: 2
+          }
+        });
+      });
+
+      // Magnetic scroll sections
+      gsap.utils.toArray('.magnetic-section').forEach(section => {
+        let ctx = gsap.context(() => {
+          gsap.to(section, {
+            scale: 1.02,
+            rotateY: 'random(-2, 2)',
+            rotateX: 'random(-1, 1)',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 60%',
+              end: 'bottom 40%',
+              scrub: 1,
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+      });
+
+      // Advanced text animations
+      gsap.utils.toArray('.text-reveal').forEach(text => {
+        const chars = text.textContent.split('');
+        text.innerHTML = chars.map(char => `<span class="char">${char}</span>`).join('');
+        
+        gsap.fromTo(text.querySelectorAll('.char'), {
+          opacity: 0,
+          y: 50,
+          rotateX: 90
+        }, {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.05,
+          stagger: 0.02,
+          scrollTrigger: {
+            trigger: text,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+
+      // Smooth section transitions with morphing
+      gsap.utils.toArray('.morph-section').forEach((section, index) => {
+        gsap.fromTo(section, {
+          clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+          opacity: 0.7
+        }, {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 70%',
+            end: 'top 30%',
+            scrub: 1,
+            toggleActions: 'play none none reverse'
           }
         });
       });
@@ -192,7 +245,12 @@ const EnhancedHomePage = () => {
       }}
     >
       {/* Demo Navigation */}
-      <DemoNavigation />
+      <MagneticElements strength={0.2}>
+        <DemoNavigation />
+      </MagneticElements>
+      
+      {/* Advanced Particle System */}
+      <AdvancedParticleSystem />
       
       <div ref={contentRef} className="scroll-content">
         {/* Floating Background Orbs */}
@@ -205,31 +263,31 @@ const EnhancedHomePage = () => {
 
         {/* Main Content Sections with 3D Effects */}
         <div className="tilt-section">
-          <section className="parallax-slow reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <GSAPTitle />
           </section>
 
-          <section className="parallax-fast reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <GSAPInfo />
           </section>
 
-          <section className="parallax-slow reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <HeroSimple />
           </section>
 
-          <section className="parallax-fast reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <ServicesSimple />
           </section>
 
-          <section className="parallax-slow reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <AboutSimple />
           </section>
 
-          <section className="parallax-fast reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <ProjectsSimple />
           </section>
 
-          <section className="parallax-slow reveal-up">
+          <section className="parallax-depth reveal-up magnetic-section morph-section">
             <ContactSimple />
           </section>
         </div>
@@ -249,6 +307,9 @@ const EnhancedHomePage = () => {
         >
           ↓
         </motion.div>
+
+        {/* Performance Monitor */}
+        <PerformanceMonitor />
       </div>
     </div>
   );

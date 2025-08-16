@@ -26,10 +26,10 @@ const DemoNavigation = () => {
             ✨ GSAP ScrollSmoother
           </Link>
           <Link 
-            href="/home-refined"
-            className="block px-3 py-2 text-sm text-green-300 hover:text-white hover:bg-green-600/20 rounded transition-colors"
+            href="/home-refined-enhanced"
+            className="block px-3 py-2 text-sm text-emerald-300 hover:text-white hover:bg-emerald-600/20 rounded transition-colors"
           >
-            🎨 Original Refined
+            💎 Refined Enhanced
           </Link>
         </div>
       </div>
