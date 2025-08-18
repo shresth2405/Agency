@@ -168,7 +168,7 @@ const LoadingPage = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xs md:text-sm">CS</span>
+                <span className="text-white font-bold text-xs md:text-sm"></span>
               </div>
               <span className="text-white font-bold text-sm md:text-base">CreativeSync</span>
             </motion.div>
@@ -226,7 +226,7 @@ const LoadingPage = () => {
                   transition={{ delay: 1, duration: 0.5 }}
                   className="text-2xl md:text-4xl font-bold text-white"
                 >
-                  CS
+                  
                 </motion.span>
               </motion.div>
               
@@ -403,7 +403,7 @@ const LoadingPage = () => {
               {progress >= 25 && progress < 50 && "Loading design components..."}
               {progress >= 50 && progress < 75 && "Preparing user experience..."}
               {progress >= 75 && progress < 100 && "Finalizing magical touches..."}
-              {progress >= 100 && "Welcome to CreativeSync! 🎉"}
+              {progress >= 100 && "Welcome to CreativeSync!"}
             </motion.p>
           ) : (
             /* Welcome Message after loading */
