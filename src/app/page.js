@@ -195,7 +195,7 @@ export default function Home() {
         // Hide loader after completion
         setTimeout(() => {
           setLoading(false);
-        }, 6000);
+        }, 3000);
       }
     }, 100);
 
@@ -226,7 +226,7 @@ export default function Home() {
                 transition={{ delay: 1, duration: 0.5 }}
                 className="text-2xl font-bold text-white"
               >
-                CS
+                
               </motion.span>
             </motion.div>
             
