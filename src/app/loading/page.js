@@ -226,11 +226,11 @@ const LoadingPage = () => {
                   transition={{ delay: 1, duration: 0.5 }}
                   className="text-2xl md:text-4xl font-bold text-white"
                 >
-<<<<<<< HEAD
+{/* <<<<<<< HEAD
                 
-=======
+{/* =======
                   
->>>>>>> 3dd42ced74d5a2d257872b891364135004acb6f2
+>>>>>>> 3dd42ced74d5a2d257872b891364135004acb6f2 */} 
                 </motion.span>
               </motion.div>
               
