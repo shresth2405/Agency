@@ -19,7 +19,10 @@ const Footer = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Process', href: '#process' },
     { name: 'Careers', href: '#careers' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'FAQ', href: '/faq' },
+    { name: 'Contact', href: '#contact' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Terms & Conditions', href: '/terms-conditions' }
   ];
   
   return (
@@ -165,11 +168,14 @@ const Footer = () => {
             &copy; {currentYear} CreativeSync. All rights reserved.
           </p>
           <div className="flex justify-center md:justify-end space-x-6">
-            <Link href="#" className="text-light/70 hover:text-secondary transition-colors">
+            <Link href="/privacy-policy" className="text-light/70 hover:text-secondary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-light/70 hover:text-secondary transition-colors">
-              Terms of Service
+            <Link href="/terms-conditions" className="text-light/70 hover:text-secondary transition-colors">
+              Terms & Conditions
+            </Link>
+            <Link href="/pricing" className="text-light/70 hover:text-secondary transition-colors">
+              Pricing
             </Link>
             <Link href="#" className="text-light/70 hover:text-secondary transition-colors">
               Cookies

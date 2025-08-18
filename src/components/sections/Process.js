@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Icon from '../ui/Icon';
 
 const Process = () => {
   const sectionRef = useRef(null);
@@ -60,49 +61,49 @@ const Process = () => {
       id: 1,
       title: "Initial Consultation",
       description: "We start with a detailed consultation to understand your vision, requirements, and business objectives. Our team analyzes your market position and target audience.",
-      icon: "🤝"
+      icon: "users"
     },
     {
       id: 2,
       title: "Project Planning",
       description: "Our project managers create a comprehensive project timeline, define milestones, and allocate resources. We establish clear communication channels and reporting structures.",
-      icon: "📋"
+      icon: "briefcase"
     },
     {
       id: 3,
       title: "Research & Strategy",
       description: "Thorough market research, competitor analysis, and user behavior studies shape our strategic approach. We develop a tailored roadmap for your project's success.",
-      icon: "🔍"
+      icon: "lightning"
     },
     {
       id: 4,
       title: "Design Phase",
       description: "Our designers create wireframes, prototypes, and visual designs. We follow an iterative process with regular feedback sessions to ensure your vision is perfectly captured.",
-      icon: "✏️"
+      icon: "design"
     },
     {
       id: 5,
       title: "Development Sprint",
       description: "Using agile methodology, our development team works in sprints to build your project. Regular updates and demos keep you involved throughout the development process.",
-      icon: "💻"
+      icon: "code"
     },
     {
       id: 6,
       title: "Quality Assurance",
       description: "Comprehensive testing across devices and platforms, including user acceptance testing, performance optimization, and security audits to ensure a flawless product.",
-      icon: "🔧"
+      icon: "cog"
     },
     {
       id: 7,
       title: "Deployment",
       description: "Carefully planned deployment process with backup strategies and rollback plans. We ensure a smooth transition to the live environment with minimal downtime.",
-      icon: "🚀"
+      icon: "rocket"
     },
     {
       id: 8,
       title: "Support & Maintenance",
       description: "Ongoing technical support, regular updates, and maintenance to keep your project running optimally. We monitor performance and implement improvements as needed.",
-      icon: "🛠️"
+      icon: "cog"
     }
   ];
   
@@ -209,7 +210,9 @@ const Process = () => {
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <div className="text-2xl">{step.icon}</div>
+                    <div className="text-2xl">
+                      <Icon name={step.icon} className="w-6 h-6 text-accent-1" />
+                    </div>
                     <h3 className="text-lg font-bold text-white">{step.title}</h3>
                   </motion.div>
                   
