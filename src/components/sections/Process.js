@@ -13,6 +13,24 @@ const Process = () => {
   
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   
+  const boxVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      y: -5,
+      scale: 1.02,
+      boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+      transition: { duration: 0.2 }
+    }
+  };
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     
@@ -25,10 +43,10 @@ const Process = () => {
           start: "top bottom-=100",
           toggleActions: "play none none none"
         },
-        x: i % 2 === 0 ? -100 : 100,
+        x: i % 2 === 0 ? -50 : 50,
         opacity: 0,
-        duration: 0.8,
-        delay: i * 0.1
+        duration: 0.6,
+        delay: i * 0.2
       });
     });
     
@@ -40,39 +58,51 @@ const Process = () => {
   const steps = [
     {
       id: 1,
-      title: "Discovery",
-      description: "We begin by understanding your business, goals, and challenges through in-depth discussions and research.",
-      icon: "🔍"
+      title: "Initial Consultation",
+      description: "We start with a detailed consultation to understand your vision, requirements, and business objectives. Our team analyzes your market position and target audience.",
+      icon: "🤝"
     },
     {
       id: 2,
-      title: "Strategy",
-      description: "Based on our findings, we develop a comprehensive strategy tailored to your specific needs and objectives.",
-      icon: "🧠"
+      title: "Project Planning",
+      description: "Our project managers create a comprehensive project timeline, define milestones, and allocate resources. We establish clear communication channels and reporting structures.",
+      icon: "📋"
     },
     {
       id: 3,
-      title: "Design",
-      description: "Our creative team crafts visually stunning and functional designs that align with your brand identity.",
-      icon: "✏️"
+      title: "Research & Strategy",
+      description: "Thorough market research, competitor analysis, and user behavior studies shape our strategic approach. We develop a tailored roadmap for your project's success.",
+      icon: "🔍"
     },
     {
       id: 4,
-      title: "Development",
-      description: "We bring the designs to life using cutting-edge technologies and industry best practices.",
-      icon: "💻"
+      title: "Design Phase",
+      description: "Our designers create wireframes, prototypes, and visual designs. We follow an iterative process with regular feedback sessions to ensure your vision is perfectly captured.",
+      icon: "✏️"
     },
     {
       id: 5,
-      title: "Testing",
-      description: "Rigorous testing ensures everything works flawlessly across all devices and platforms.",
-      icon: "🔧"
+      title: "Development Sprint",
+      description: "Using agile methodology, our development team works in sprints to build your project. Regular updates and demos keep you involved throughout the development process.",
+      icon: "💻"
     },
     {
       id: 6,
-      title: "Launch",
-      description: "We carefully deploy your project and provide support to ensure a smooth launch.",
+      title: "Quality Assurance",
+      description: "Comprehensive testing across devices and platforms, including user acceptance testing, performance optimization, and security audits to ensure a flawless product.",
+      icon: "🔧"
+    },
+    {
+      id: 7,
+      title: "Deployment",
+      description: "Carefully planned deployment process with backup strategies and rollback plans. We ensure a smooth transition to the live environment with minimal downtime.",
       icon: "🚀"
+    },
+    {
+      id: 8,
+      title: "Support & Maintenance",
+      description: "Ongoing technical support, regular updates, and maintenance to keep your project running optimally. We monitor performance and implement improvements as needed.",
+      icon: "🛠️"
     }
   ];
   
@@ -106,7 +136,9 @@ const Process = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <span className="bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm inline-block mb-4">Our Process</span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gradient-hero">
+            Our <span className="text-gradient-accent">Projects</span>
+          </h2>
           </motion.div>
           
           <motion.h2
@@ -132,37 +164,77 @@ const Process = () => {
         
         <div className="relative">
           {/* Timeline center line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/10 rounded-full hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/10 rounded-full md:block"></div>
           
-          <div className="space-y-12 md:space-y-0 relative">
+          <div className="space-y-8 md:space-y-12 relative z-10 text-white">
             {steps.map((step, index) => (
-              <div 
+              <motion.div 
                 key={step.id}
-                className="process-step md:grid md:grid-cols-2 md:gap-8 items-center relative"
+                className="process-step md:grid md:grid-cols-2 md:gap-12 items-center relative"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
               >
                 {/* Step number circle for desktop */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-accent-1 rounded-full items-center justify-center text-white font-bold z-10 hidden md:flex">
-                  {step.id}
-                </div>
+                <motion.div 
+                  className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-accent-1 rounded-full items-center justify-center text-white font-bold z-10 md:flex hidden"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                >
+                  .
+                </motion.div>
                 
                 {/* Content positioning based on even/odd */}
-                <div className={`${index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'} bg-dark/50 backdrop-blur-sm p-8 rounded-xl border border-white/10 relative`}>
+                <motion.div 
+                  className={`${index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'} 
+                    bg-dark/50 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-white/10 relative
+                    max-w-md mx-auto w-full`}
+                  variants={boxVariants}
+                  whileHover="hover"
+                >
                   {/* Step number for mobile */}
-                  <div className="w-10 h-10 bg-accent-1 rounded-full flex items-center justify-center text-white font-bold mb-4 md:hidden">
+                  <motion.div 
+                    className="w-8 h-8 bg-accent-1 rounded-full flex items-center justify-center text-white font-bold mb-4 md:hidden"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.1 }}
+                  >
                     {step.id}
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-3xl">{step.icon}</div>
-                    <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                  </div>
+                  <motion.div 
+                    className="flex items-center gap-3 mb-3"
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <div className="text-2xl">{step.icon}</div>
+                    <h3 className="text-lg font-bold text-white">{step.title}</h3>
+                  </motion.div>
                   
-                  <p className="text-light/70">{step.description}</p>
-                </div>
+                  <motion.p 
+                    className="text-light/70 text-sm"
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    {step.description}
+                  </motion.p>
+
+                  {/* Connecting line with animation */}
+                  <motion.div 
+                    className={`absolute top-1/2 w-1/4 h-0.5 bg-gradient-to-r from-accent-1/50 to-transparent
+                      ${index % 2 === 0 ? 'right-0 translate-x-full' : 'left-0 -translate-x-full'}`}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ delay: 0.5 }}
+                  />
+                </motion.div>
                 
                 {/* Empty div for layout on desktop */}
-                <div className={`hidden md:block ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1'}`}></div>
-              </div>
+                <div className={`hidden md:block ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1'}`} />
+              </motion.div>
             ))}
           </div>
         </div>
