@@ -12,105 +12,10 @@ import ContactSimple from "@/components/sections/ContactSimple";
 import Testimonials from '@/components/sections/Testimonials';
 import TeamPage from './team/page';
 import Process from '@/components/sections/Process';
+import FAQSection from '@/components/sections/FAQSection';
+import EnhancedNavbar from '@/components/layout/EnhancedNavbar';
+import FloatingNavIndicator from '@/components/ui/FloatingNavIndicator';
 // import RefinedTeamSection from "@/components/sections/RefinedTeamSection";
-
-// Simple Navbar Component
-const SimpleNavbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { title: 'Home', href: '#home' },
-    { title: 'About', href: '#about' },
-    { title: 'Services', href: '#services' },
-    { title: 'Projects', href: '#projects' },
-    { title: 'Team', href: '#team' },
-    { title: 'Contact', href: '#contact' },
-  ];
-
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-primary/90 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white">
-            Creative<span className="text-secondary">Sync</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.href}
-                className="text-white hover:text-secondary transition-colors duration-300"
-                whileHover={{ y: -2 }}
-              >
-                {item.title}
-              </motion.a>
-            ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-lg font-semibold"
-            >
-              Get Started
-            </motion.button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-primary/95 backdrop-blur-md rounded-lg mt-2 p-4"
-          >
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="block py-3 text-white hover:text-secondary transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.title}
-              </a>
-            ))}
-            <button className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-lg font-semibold">
-              Get Started
-            </button>
-          </motion.div>
-        )}
-      </div>
-    </motion.nav>
-  );
-};
 
 // Simple Footer Component
 const SimpleFooter = () => {
@@ -128,7 +33,7 @@ const SimpleFooter = () => {
               in the modern world through innovative design and development.
             </p>
             <div className="flex space-x-4">
-              {['🐦', '💼', '📸', '🏀'].map((icon, index) => (
+              {['', '', '', ''].map((icon, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -144,15 +49,27 @@ const SimpleFooter = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
-              {['Home', 'About', 'Services', 'Projects', 'Team', 'Contact'].map((link, index) => (
-                <a
+              {['Home', 'About', 'Services', 'Projects', 'Team', 'FAQ', 'Contact'].map((link, index) => (
+                <Link
                   key={index}
-                  href={`#${link.toLowerCase()}`}
+                  href={link === 'Home' ? '/' : link === 'Contact' ? '#contact' : `#${link.toLowerCase()}`}
                   className="block text-gray-400 hover:text-secondary transition-colors"
                 >
                   {link}
-                </a>
+                </Link>
               ))}
+              <Link
+                href="/terms-conditions"
+                className="block text-gray-400 hover:text-secondary transition-colors"
+              >
+                Terms & Conditions
+              </Link>
+              <Link
+                href="/pricing"
+                className="block text-gray-400 hover:text-secondary transition-colors"
+              >
+                Pricing
+              </Link>
             </div>
           </div>
 
@@ -160,9 +77,9 @@ const SimpleFooter = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-gray-400">
-              <p>📧 hello@creativesync.com</p>
-              <p>📱 +1 (555) 123-4567</p>
-              <p>📍 San Francisco, CA</p>
+              <p> hello@creativesync.com</p>
+              <p> +1 (555) 123-4567</p>
+              <p> San Francisco, CA</p>
             </div>
           </div>
         </div>
@@ -281,7 +198,8 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <SimpleNavbar />
+      <EnhancedNavbar />
+      <FloatingNavIndicator />
       
       <main>
         <HeroSimple />
@@ -290,6 +208,7 @@ export default function Home() {
         <ProjectsSimple />
         <Process/>
         <TeamPage/>
+        <FAQSection />
         <ContactSimple />
       </main>
       

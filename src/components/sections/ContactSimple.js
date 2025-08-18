@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Icon from '../ui/Icon';
 
 const ContactSimple = () => {
   const [isClient, setIsClient] = useState(false);
@@ -144,19 +145,19 @@ const ContactSimple = () => {
               <div className="space-y-6">
                 {[
                   {
-                    icon: '📧',
+                    icon: 'mail',
                     title: 'Email',
                     info: 'hello@creativesync.com',
                     description: 'Send us an email anytime'
                   },
                   {
-                    icon: '📱',
+                    icon: 'phone',
                     title: 'Phone',
                     info: '+1 (555) 123-4567',
                     description: 'Mon-Fri from 8am to 6pm'
                   },
                   {
-                    icon: '📍',
+                    icon: 'location',
                     title: 'Office',
                     info: 'San Francisco, CA',
                     description: 'Visit us in person'
@@ -168,7 +169,9 @@ const ContactSimple = () => {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="text-2xl">{contact.icon}</div>
+                    <div className="text-2xl">
+                      <Icon name={contact.icon} className="w-6 h-6 text-accent-1" />
+                    </div>
                     <div>
                       <h4 className="text-white font-semibold">{contact.title}</h4>
                       <p className="text-accent-2 font-medium">{contact.info}</p>
@@ -185,10 +188,10 @@ const ContactSimple = () => {
               
               <div className="flex space-x-4">
                 {[
-                  { name: 'Twitter', icon: '🐦' },
-                  { name: 'LinkedIn', icon: '💼' },
-                  { name: 'Instagram', icon: '📸' },
-                  { name: 'Dribbble', icon: '🏀' }
+                  { name: 'Twitter', icon: 'twitter' },
+                  { name: 'LinkedIn', icon: 'linkedin' },
+                  { name: 'Instagram', icon: 'instagram' },
+                  { name: 'Dribbble', icon: 'dribbble' }
                 ].map((social, index) => (
                   <motion.button
                     key={index}
@@ -197,7 +200,7 @@ const ContactSimple = () => {
                     className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center text-xl hover:bg-accent-2 transition-colors duration-300"
                     title={social.name}
                   >
-                    {social.icon}
+                    <Icon name={social.icon} className="w-6 h-6 text-white" />
                   </motion.button>
                 ))}
               </div>

@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Icon from '../ui/Icon';
 
 const ServicesSimple = () => {
   const [isClient, setIsClient] = useState(false);
@@ -18,42 +19,42 @@ const ServicesSimple = () => {
       id: 1,
       title: "UI/UX Design",
       description: "Creating intuitive and beautiful user experiences that convert visitors into customers.",
-      icon: "🎨",
+      icon: "palette",
       color: "bg-gradient-purple-blue"
     },
     {
       id: 2,
       title: "Web Development",
       description: "Building fast, responsive, and scalable websites using modern technologies.",
-      icon: "💻",
+      icon: "code",
       color: "bg-gradient-blue-purple"
     },
     {
       id: 3,
       title: "Branding",
       description: "Developing strong brand identities that resonate with your target audience.",
-      icon: "🚀",
+      icon: "rocket",
       color: "bg-gradient-glow"
     },
     {
       id: 4,
       title: "Digital Marketing",
       description: "Strategic marketing campaigns that drive traffic and increase conversions.",
-      icon: "📈",
+      icon: "sparkles",
       color: "bg-gradient-purple-blue"
     },
     {
       id: 5,
       title: "E-commerce",
       description: "Complete e-commerce solutions that help you sell more online.",
-      icon: "🛒",
+      icon: "briefcase",
       color: "bg-gradient-blue-purple"
     },
     {
       id: 6,
       title: "Mobile Apps",
       description: "Native and cross-platform mobile applications for iOS and Android.",
-      icon: "📱",
+      icon: "mobile",
       color: "bg-gradient-glow"
     }
   ];
@@ -90,7 +91,7 @@ const ServicesSimple = () => {
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 hover:border-accent-1 transition-all duration-300 h-full relative overflow-hidden">
                 {/* Icon */}
                 <div className="text-4xl mb-6 text-center">
-                  {service.icon}
+                  <Icon name={service.icon} className="w-12 h-12 mx-auto text-accent-1" />
                 </div>
                 
                 {/* Title */}

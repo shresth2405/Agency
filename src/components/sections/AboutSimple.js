@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Icon from '../ui/Icon';
 
 const AboutSimple = () => {
   const [isClient, setIsClient] = useState(false);
@@ -48,20 +49,21 @@ const AboutSimple = () => {
             {/* Key Points */}
             <div className="space-y-4">
               {[
-                "🎯 Strategic approach to every project",
-                "🚀 Cutting-edge technologies and tools",
-                "👥 Collaborative and transparent process",
-                "📈 Focus on measurable results"
+                { text: "Strategic approach to every project", icon: "lightning" },
+                { text: "Cutting-edge technologies and tools", icon: "rocket" },
+                { text: "Collaborative and transparent process", icon: "users" },
+                { text: "Focus on measurable results", icon: "sparkles" }
               ].map((point, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center text-gray-300"
+                  className="flex items-center gap-3 text-gray-300"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <span className="text-lg">{point}</span>
+                  <Icon name={point.icon} className="w-5 h-5 text-accent-1 flex-shrink-0" />
+                  <span className="text-lg">{point.text}</span>
                 </motion.div>
               ))}
             </div>
@@ -86,10 +88,10 @@ const AboutSimple = () => {
               
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { value: '150+', label: 'Projects Delivered', icon: '🚀' },
-                  { value: '50+', label: 'Happy Clients', icon: '😊' },
-                  { value: '5+', label: 'Years Experience', icon: '⏰' },
-                  { value: '15+', label: 'Team Members', icon: '👥' },
+                  { value: '150+', label: 'Projects Delivered', icon: 'rocket' },
+                  { value: '50+', label: 'Happy Clients', icon: 'users' },
+                  { value: '5+', label: 'Years Experience', icon: 'sparkles' },
+                  { value: '15+', label: 'Team Members', icon: 'briefcase' },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -100,7 +102,9 @@ const AboutSimple = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-2xl mb-2">{stat.icon}</div>
+                    <div className="text-2xl mb-2">
+                      <Icon name={stat.icon} className="w-8 h-8 text-accent-1 mx-auto" />
+                    </div>
                     <div className="text-2xl font-bold text-accent-2 mb-1">
                       {stat.value}
                     </div>

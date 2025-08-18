@@ -40,11 +40,13 @@ const Navbar = () => {
   }
 
   const navItems = [
-    { title: 'Home', href: '#home' },
+    { title: 'Home', href: '/' },
     { title: 'Services', href: '#services' },
     { title: 'Projects', href: '#projects' },
     { title: 'Process', href: '#process' },
-    { title: 'Contact', href: '#contact' },
+    { title: 'Team', href: '/team' },
+    { title: 'Pricing', href: '/pricing' },
+    { title: 'Contact', href: '/contact' },
   ];
 
   return (
