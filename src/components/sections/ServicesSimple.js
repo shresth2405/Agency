@@ -142,7 +142,7 @@ const ServicesSimple = () => {
               color="cyan"
               speed="5s"
             >
-              Let's Work Together
+              Let&apos;s Work Together
             </StarBorder>
 
      

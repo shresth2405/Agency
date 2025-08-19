@@ -214,7 +214,7 @@ const ProjectsSimple = () => {
                     autoPlay
                     loop
                     muted
-                    objectFit="cover"
+                    // objectFit="cover"
                     src={project.image}
                     className="transition-all duration-500"
                   />
