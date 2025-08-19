@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Icon from '../ui/Icon';
+import StarBorder from '../ui/StarBorder';
 
 const ServicesSimple = () => {
   const [isClient, setIsClient] = useState(false);
@@ -62,7 +63,7 @@ const ServicesSimple = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-primary via-dark to-primary">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,53 +94,58 @@ const ServicesSimple = () => {
                 <div className="text-4xl mb-6 text-center">
                   <Icon name={service.icon} className="w-12 h-12 mx-auto text-accent-1" />
                 </div>
-                
+
                 {/* Title */}
                 <h3 className="text-2xl font-bold text-white mb-4 text-center">
                   {service.title}
                 </h3>
-                
+
                 {/* Description */}
                 <p className="text-gray-300 text-center leading-relaxed">
                   {service.description}
                 </p>
-                
+
                 {/* Gradient overlay on hover */}
                 <motion.div
                   className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}
                 />
-                
+
                 {/* Glowing border effect on hover */}
-                <motion.div
+                {/* <motion.div
                   className="absolute inset-0 rounded-xl border-2 border-transparent"
                   whileHover={{
                     background: "linear-gradient(135deg, #8B5CF6, #3B82F6) border-box",
                     borderImage: "linear-gradient(135deg, #8B5CF6, #3B82F6) 1",
                   }}
-                />
+                /> */}
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <motion.div 
+        <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0. }}
           viewport={{ once: true }}
         >
           <p className="text-gray-300 mb-8 text-lg">
             Ready to elevate your digital presence?
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-accent-1 to-accent-2 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Let&apos;s Work Together
-          </motion.button>
+          
+            <StarBorder
+              as="button"
+              onClick={() => window.location.href = '/contact'}
+              className="custom-class"
+              color="cyan"
+              speed="5s"
+            >
+              Let's Work Together
+            </StarBorder>
+
+     
         </motion.div>
       </div>
     </section>

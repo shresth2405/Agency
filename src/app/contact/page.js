@@ -238,12 +238,13 @@ const ContactPage = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-white font-medium mb-2">Phone Number</label>
+                    <label className="block text-white font-medium mb-2">Phone Number *</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      required={true}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-purple-500 transition-colors"
                       placeholder="+1 (555) 123-4567"
                     />

@@ -29,9 +29,7 @@ const FAQSection = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <span className="bg-accent-1/20 text-accent-1 px-4 py-1 rounded-full text-sm inline-block mb-4">
-              FAQ
-            </span>
+           
           </motion.div>
 
           <motion.h2

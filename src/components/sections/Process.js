@@ -256,8 +256,8 @@ const Process = () => {
 
                   {/* Connecting line with animation */}
                   <motion.div 
-                    className={`absolute top-1/2 w-[60px] h-[2px] bg-white/10
-                      ${index % 2 === 0 ? 'right-0 translate-x-full' : 'left-0 -translate-x-full'}`}
+                    className={`absolute top-1/2 w-[40px] h-[2px]  bg-white/10
+                      ${index % 2 === 0 ? ' translate-x-full right-[21px]' : 'left-[21px] -translate-x-full'}`}
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     transition={{ delay: 0.5 }}

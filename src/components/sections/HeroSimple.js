@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import CountUp from '@/components/ui/CountUp';
+import Link from 'next/link';
 
 const HeroSimple = () => {
   const [isClient, setIsClient] = useState(false);
@@ -90,6 +92,7 @@ const HeroSimple = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.button
+              onClick={() => window.location.href = '/contact'}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-blue-purple text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 gradient-shift"
@@ -98,6 +101,7 @@ const HeroSimple = () => {
             </motion.button>
             
             <motion.button
+              onClick={()=>{ window.location.href = '#projects'; }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border-2 border-accent-1 text-accent-1 font-semibold rounded-lg hover:bg-gradient-purple-blue hover:text-white hover:border-transparent transition-all duration-300"
@@ -126,7 +130,7 @@ const HeroSimple = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
-                {stat.value}
+                <CountUp to={parseInt(stat.value)} duration={5} />+
               </div>
               <div className="text-gray-400 text-sm md:text-base">
                 {stat.label}

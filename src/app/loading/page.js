@@ -403,7 +403,7 @@ const LoadingPage = () => {
               {progress >= 25 && progress < 50 && "Loading design components..."}
               {progress >= 50 && progress < 75 && "Preparing user experience..."}
               {progress >= 75 && progress < 100 && "Finalizing magical touches..."}
-              {progress >= 100 && "Welcome to CreativeSync!"}
+              {progress >= 100 && "Welcome to CreativeSynccxfxxn!"}
             </motion.p>
           ) : (
             /* Welcome Message after loading */
