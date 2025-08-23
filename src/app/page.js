@@ -7,7 +7,7 @@ import Link from 'next/link';
 import HeroSimple from "@/components/sections/HeroSimple";
 import AboutSimple from "@/components/sections/AboutSimple";
 import ServicesSimple from "@/components/sections/ServicesSimple";
-import ProjectsSimple from "@/components/sections/ProjectsSimple";
+import {CarouselDemo} from "@/components/sections/ProjectsSimple"
 import ContactSimple from "@/components/sections/ContactSimple";
 import Testimonials from '@/components/sections/Testimonials';
 import TeamPage from './team/page';
@@ -205,7 +205,7 @@ export default function Home() {
         <HeroSimple />
         <AboutSimple />
         <ServicesSimple />
-        <ProjectsSimple />
+        <CarouselDemo />
         <Process/>
         <TeamPage/>
         <FAQSection />

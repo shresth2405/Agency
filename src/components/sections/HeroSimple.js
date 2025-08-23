@@ -82,7 +82,7 @@ const HeroSimple = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             We craft exceptional digital experiences through innovative design, 
-            cutting-edge development, and strategic thinking.
+            cutting-edge development, and strategic thinking. dfbhdsgyfdwgywgfurewhahe
           </motion.p>
           
           <motion.div 
